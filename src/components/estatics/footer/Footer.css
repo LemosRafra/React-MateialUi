@@ -1,8 +1,18 @@
-.center {
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+.box1 {
+  background-color: #3f51b5;
+  height: 120px;
 }
-.bottom {
+
+.box2 {
+  background-color: #303f9f;
+  height: 60px;
+}
+
+.redes {
+  font-size: 60px !important;
+  color: white;
+}
+
+.textos {
   color: white;
 }

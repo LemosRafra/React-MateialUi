@@ -1,11 +1,21 @@
 import React from "react";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import FacebookIcon from "@material-ui/icons/Facebook";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import { Typography, Box, Grid } from "@material-ui/core";
+import "./Footer.css";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function Footer() {
-  return (
-    <>
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  var footerComponent;
+
+  if (token != "") {
+    footerComponent = (
       <Grid
         container
         direction="row"
@@ -13,10 +23,7 @@ function Footer() {
         alignItems="center"
       >
         <Grid alignItems="center" item xs={12}>
-          <Box
-            className="backcolor"
-            style={{ backgroundColor: "#303F9F", height: "120px" }}
-          >
+          <Box className="box1">
             <Box
               paddingTop={1}
               display="flex"
@@ -27,30 +34,33 @@ function Footer() {
                 variant="h5"
                 align="center"
                 gutterBottom
-                style={{ color: "white" }}
+                className="textos"
               >
-                Siga-me nas redes sociais{" "}
+                Siga-nos nas redes sociais{" "}
               </Typography>
             </Box>
             <Box display="flex" alignItems="center" justifyContent="center">
-              <a href="https://github.com/LemosRafra" target="_blank">
-                <GitHubIcon style={{ fontSize: 50, color: "white" }} />
+              <a href="https://www.facebook.com" target="_blank">
+                <FacebookIcon className="redes" />
+              </a>
+              <a href="https://www.instagram.com" target="_blank">
+                <InstagramIcon className="redes" />
               </a>
               <a
                 href="https://www.linkedin.com/in/rafael-lemos-790bb71b2/"
                 target="_blank"
               >
-                <LinkedInIcon style={{ fontSize: 60, color: "white" }} />
+                <LinkedInIcon className="redes" />
               </a>
             </Box>
           </Box>
-          <Box style={{ backgroundColor: "#303F9F", height: "60px" }}>
+          <Box className="box2">
             <Box paddingTop={1}>
               <Typography
                 variant="subtitle2"
                 align="center"
                 gutterBottom
-                style={{ color: "white" }}
+                className="textos"
               >
                 © 2020 Copyright:
               </Typography>
@@ -60,18 +70,19 @@ function Footer() {
                 <Typography
                   variant="subtitle2"
                   gutterBottom
-                  style={{ color: "white" }}
+                  className="textos"
                   align="center"
                 >
-                  Rafael Lemos
+                  brasil.generation.org
                 </Typography>
               </a>
             </Box>
           </Box>
         </Grid>
       </Grid>
-    </>
-  );
+    );
+  }
+  return <>{footerComponent}</>;
 }
 
 export default Footer;
